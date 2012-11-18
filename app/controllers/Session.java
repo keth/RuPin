@@ -11,6 +11,7 @@ import is.ru.honn.rupin.service.UserService;
 import play.data.Form;
 import play.mvc.Result;
 import views.html.index;
+import views.html.session.board;
 import views.html.session.login;
 import views.html.session.loginform;
 
@@ -77,6 +78,16 @@ public class Session extends RuPinController {
     public static Result logout() {
         return ok(index.render());
         // TODO: gera logout
+    }
+
+    public static Result getBoard(String boardName){
+        PinService pinService = (PinService) ctx.getBean("pinService");
+        List<Pin> pins = pinService.getPinsOnBoard("keth", boardName);
+
+
+        return ok(board.render(pins));
+        //return ok(index.render());
+
     }
 }
 

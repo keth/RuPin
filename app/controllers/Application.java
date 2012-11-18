@@ -1,8 +1,7 @@
 package controllers;
 
-import play.mvc.*;
-
-import views.html.*;
+import play.mvc.Result;
+import views.html.index;
 
 public class Application extends RuPinController
 {

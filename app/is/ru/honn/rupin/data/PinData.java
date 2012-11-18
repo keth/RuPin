@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class PinData extends RuData implements PinDataGateway
 {
-  @Override
+  //@Override
   public int add(Pin pin, String boardname, String username)
   {
     SimpleJdbcInsert insert =
@@ -28,7 +28,7 @@ public class PinData extends RuData implements PinDataGateway
     return insert.execute(parameters);
   }
 
-  @Override
+  //@Override
   public List<Pin> getPinsOnBoard(String boardname, String username)
   {
     JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
@@ -36,4 +36,15 @@ public class PinData extends RuData implements PinDataGateway
         "select * from ru_boards where username=?", new BoardRowMapper(), username);
     return pins;
   }
+
+   // @Override
+    public List<Pin> getFollowersPins(String username) {
+        JdbcTemplate jdbcTemplate2 = new JdbcTemplate(getDataSource());
+
+        List<Pin> pins = (List<Pin>)jdbcTemplate2.query(
+            "select * from ru_pins where username=?", new PinRowMapper(), username);
+        return pins;
+    }
+
+
 }

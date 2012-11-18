@@ -9,4 +9,5 @@ public interface PinDataGateway extends RuDataAccess
 {
   public int add(Pin pin, String boardname, String username);
   public List<Pin> getPinsOnBoard(String boardname, String username);
+  public List<Pin> getFollowersPins(String username);
 }

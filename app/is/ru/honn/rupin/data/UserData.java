@@ -10,11 +10,13 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserData extends RuData implements UserDataGateway
 {
-  public int add(User user)
+
+    public int add(User user)
   {
     SimpleJdbcInsert insert =
         new SimpleJdbcInsert(getDataSource())
@@ -68,4 +70,12 @@ public class UserData extends RuData implements UserDataGateway
                 "select * from users where id="+id, new UserRowMapper());
         return user;
     }
+
+    public List<String> getFollowers(String username)
+    {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        return jdbcTemplate.query("select * from ru_followers where username=?", new FollowRowMapper(), username);
+
+    }
+
 }

@@ -10,9 +10,10 @@ GET     /signup                     controllers.SignUp.blank()
 POST    /signup                     controllers.SignUp.submit()
 
 # Session
-GET     /login                      controllers.Session.loginForm()
-GET     /RuPin                      controllers.Session.login()
-GET     /login3                     controllers.Session.logout()
+GET     /loginform                  controllers.Session.loginForm()
+POST    /loginform                  controllers.Session.authenticate()
+GET     /login                      controllers.Session.login()
+GET     /logout                     controllers.Session.logout()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,21 +1,21 @@
-@(user: is.ru.honn.rupin.domain.User)
-
+@(pins: List[is.ru.honn.rupin.domain.Pin])
 
 
 @main(Html("RuPin")) {
 
-    <h2>Welcome!</h2>
+    <h2>Welcome!!!!!!!</h2>
     <h3>U R Loged In as: </h3>
-    <p>Name: @user.getName()</p>
-    <p>Username: @user.getUsername()</p>
-    <p>Email: @user.getEmail()</p>
 
-    <p>
+    <p>U R Loged In:  </p>
 
-        U R Loged In:
+    @for(pin <- pins){
+       <p>@pin.getDescription</p>
+    }
+
+
+        <p></p>
         <!--<a class="btn" href="@routes.SignUp.blank">Login</a>   -->
         <a class="btn" href="@routes.Session.logout">Logout</a>
-    </p>
 
 
 

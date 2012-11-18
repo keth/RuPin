@@ -83,4 +83,11 @@ public class PinServiceData implements PinService
     List<Pin> pins = pinDataGateway.getPinsOnBoard(username, boardname);
     return pins;
   }
+
+    @Override
+  public List<Pin> getFollowersPins(String username)
+  {
+    List<Pin> pins = pinDataGateway.getFollowersPins(username);
+    return pins;
+  }
 }

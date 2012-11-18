@@ -9,7 +9,11 @@
     <p>U R Loged In:  </p>
 
     @for(pin <- pins){
+       <p>@pin.getLink</p>
        <p>@pin.getDescription</p>
+
+        <p>*****************************</p>
+
     }
 
 

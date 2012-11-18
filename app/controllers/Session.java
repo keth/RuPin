@@ -1,6 +1,7 @@
 package controllers;
 
 import is.ru.honn.rupin.data.UserDataGateway;
+import is.ru.honn.rupin.domain.Board;
 import is.ru.honn.rupin.domain.Pin;
 import is.ru.honn.rupin.domain.User;
 import is.ru.honn.rupin.domain.UserAuthentication;
@@ -54,8 +55,13 @@ public class Session extends RuPinController {
            List<Pin> pins = pinService.getFollowersPins(u.getUsername());
 
            List<String> followers = userDataGateway.getFollowers(u.getUsername());
+           //List<String> followers = pinService.getFollowers(u.getUsername());
            for (String f : followers){
               // pins = pinService.getFollowersPins(f);
+
+               List<Board> boards = pinService.getBoards(f);
+                    for(Board b : boards) {
+               }
            }
 
 

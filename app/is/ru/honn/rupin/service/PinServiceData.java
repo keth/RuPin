@@ -90,4 +90,11 @@ public class PinServiceData implements PinService
     List<Pin> pins = pinDataGateway.getFollowersPins(username);
     return pins;
   }
+
+/*    @Override
+  public List<String> getFollowers(String username)
+  {
+    List<String> followers = userDataGateway.getFollowers(username);
+    return followers;
+  }    */
 }

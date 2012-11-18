@@ -73,9 +73,14 @@ public class UserData extends RuData implements UserDataGateway
 
     public List<String> getFollowers(String username)
     {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
-        return jdbcTemplate.query("select * from ru_followers where username=?", new FollowRowMapper(), username);
+        //JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+       // return jdbcTemplate.query("select * from ru_followers where username=?", new FollowRowMapper(), username);
 
+        JdbcTemplate jdbcTemplate2 = new JdbcTemplate(getDataSource());
+
+        List<String> followers = (List<String>)jdbcTemplate2.query(
+                "select * from ru_followers where username=?", new FollowRowMapper(), username);
+        return followers;
     }
 
 }

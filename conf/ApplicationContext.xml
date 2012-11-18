@@ -10,6 +10,7 @@
     <bean id="pinService" class="is.ru.honn.rupin.service.PinServiceData">
         <property name="pinDataGateway" ref="pinDataGateway"/>
         <property name="boardDataGateway" ref="boardDataGateway"/>
+        <property name="userDataGateway" ref="userDataGateway"/>
     </bean>
 
     <bean id="userDataGateway" class="is.ru.honn.rupin.data.UserData">

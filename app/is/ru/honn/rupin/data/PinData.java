@@ -33,7 +33,7 @@ public class PinData extends RuData implements PinDataGateway
   {
     JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
     List<Pin> pins = (List<Pin>)jdbcTemplate.query(
-        "select * from ru_boards where username=?", new BoardRowMapper(), username);
+        "select * from ru_pins where username=?", new PinRowMapper(), username);
     return pins;
   }
 

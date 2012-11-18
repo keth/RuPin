@@ -13,9 +13,7 @@ public class PinRowMapper implements RowMapper
   {
     Pin pin = new Pin(resultSet.getString(1),     // description
                       resultSet.getString(2),     // link
-                      resultSet.getString(3),     // Image
-                      //resultSet.getString(4),     // Boardname
-                      resultSet.getString(4)) ;   // creator - username
+                      resultSet.getString(3));     // Image
     return pin;
   }
 }

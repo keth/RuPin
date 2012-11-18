@@ -80,14 +80,24 @@ public class PinServiceData implements PinService
   @Override
   public List<Pin> getPinsOnBoard(String username, String boardname)
   {
-    List<Pin> pins = pinDataGateway.getPinsOnBoard(username, boardname);
+    User u = userDataGateway.getUserByUsername(username);
+    Board b = boardDataGateway.getBoard(username, boardname);
+    List<Pin> pins = pinDataGateway.getPinsOnBoard(boardname, username);
+    for (Pin p : pins){
+        p.setCreator(u);
+        p.setBoard(b);
+    }
     return pins;
   }
 
     @Override
   public List<Pin> getFollowersPins(String username)
   {
+      User u = userDataGateway.getUserByUsername(username);
     List<Pin> pins = pinDataGateway.getFollowersPins(username);
+      for (Pin p : pins){
+          p.setCreator(u);
+      }
     return pins;
   }
 

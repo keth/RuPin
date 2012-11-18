@@ -1,6 +1,8 @@
 package controllers;
 
+import is.ru.honn.rupin.data.BoardDataGateway;
 import is.ru.honn.rupin.data.UserDataGateway;
+import is.ru.honn.rupin.domain.Board;
 import is.ru.honn.rupin.domain.Pin;
 import is.ru.honn.rupin.domain.User;
 import is.ru.honn.rupin.domain.UserAuthentication;
@@ -52,12 +54,18 @@ public class Session extends RuPinController {
             UserService userService = (UserService) ctx.getBean("userService");
             userService.setUserDataGateway(userDataGateway);
 
+            BoardDataGateway boardDataGateway = (BoardDataGateway) ctx.getBean("boardDataGateway");
+
+
             List<Pin> pins = new ArrayList<Pin>();
             List<String> followers = userDataGateway.getFollowers(u.getUsername());
             for (String f : followers) {
-                List<Pin> followerPins = pinService.getFollowersPins(f.toString());
-                for (Pin fp : followerPins) {
-                    pins.add(fp);
+                List<Board> boards = boardDataGateway.getBoards(f);
+                for (Board b : boards){
+                    List<Pin> followerPins = pinService.getPinsOnBoard(f, b.toString());
+                    for (Pin fp : followerPins) {
+                        pins.add(fp);
+                    }
                 }
             }
             return ok(login.render(pins));

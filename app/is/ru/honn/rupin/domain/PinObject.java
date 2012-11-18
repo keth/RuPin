@@ -7,7 +7,14 @@ public class PinObject
   protected User creator;
   protected Date created = new Date();
 
-  public User getCreator()
+  public PinObject(){
+  }
+
+    public PinObject(User creator) {
+        this.creator = creator;
+    }
+
+    public User getCreator()
   {
     return creator;
   }
@@ -26,4 +33,8 @@ public class PinObject
   {
     this.created = created;
   }
+
+    public String toString(User creator) {
+        return creator.getUsername();
+    }
 }

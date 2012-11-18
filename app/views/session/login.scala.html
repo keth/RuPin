@@ -9,8 +9,10 @@
     <p>U R Loged In:  </p>
 
     @for(pin <- pins){
+        <p>@pin.getDescription</p>
        <p>@pin.getLink</p>
-       <p>@pin.getDescription</p>
+       <p>@pin.getImage</p>
+       <p>@pin.getBoardname</p>
 
         <p>*****************************</p>
 
@@ -20,7 +22,6 @@
         <p></p>
         <!--<a class="btn" href="@routes.SignUp.blank">Login</a>   -->
         <a class="btn" href="@routes.Session.logout">Logout</a>
-
 
 
 }

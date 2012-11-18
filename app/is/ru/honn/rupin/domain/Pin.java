@@ -5,8 +5,8 @@ public class Pin extends PinObject
   protected String link;
   protected String description;
   protected String image;
-
   protected Board board;
+  protected String boardname;
 
   public Pin()
   {
@@ -19,7 +19,20 @@ public class Pin extends PinObject
     this.image = image;
   }
 
-  public String getLink()
+    public Pin(String description, String link, String image, String boardname) {
+        //super(creator);
+        //super.toString(getCreator()) = creator;
+        this.description = description;
+        this.link = link;
+        this.image = image;
+        this.boardname = boardname;
+    }
+
+    public Pin(User creator) {
+        super(creator);
+    }
+
+    public String getLink()
   {
     return link;
   }
@@ -58,4 +71,12 @@ public class Pin extends PinObject
   {
     this.board = board;
   }
+
+    public String getBoardname() {
+        return boardname;
+    }
+
+    public void setBoardname(String boardname) {
+        this.boardname = boardname;
+    }
 }

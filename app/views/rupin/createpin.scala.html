@@ -3,6 +3,8 @@
 @import helper._
 @import helper.twitterBootstrap._
 
+
+
 @title = {
     createPin
 }
@@ -11,6 +13,12 @@
     @helper.form(action = routes.Rupin.submit) {
         <fieldset>
             <legend>Pin informations</legend>
+            @inputText(
+                            pinForm("board.name"),
+                            '_label -> "board",
+                            '_help -> "Please enter description.",
+                            '_error -> pinForm.globalError
+                        )
             @inputText(
                 pinForm("description"),
                 '_label -> "Description",

@@ -1,0 +1,34 @@
+@(pins: List[is.ru.honn.rupin.domain.Pin])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main(Html("RuPin")) {
+    <h2>Welcome</h2>
+    <h3>U R Loged In </h3>
+
+<div class="actions">
+    <a class="btn" href="@routes.Rupin.blank">Create New Pin</a>
+
+    <a class="btn" href="@routes.Session.logout">Logout</a>
+</div>
+
+
+    <h4>your followers pins:  </h4>
+
+
+    @for(pin <- pins){
+    <div class="container">
+        <p>@pin.getDescription</p>
+        <p><i>@pin.getLink</i></p>
+        <p>@pin.getImage</p>
+        <p>@pin.getCreator().getUsername</p>
+        <a href="@routes.Rupin.getBoard(pin.getBoard.getName())">@pin.getBoard</a>
+
+
+        <p>*****************************</p>
+
+    </div>
+    }
+
+}

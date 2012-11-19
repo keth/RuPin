@@ -12,7 +12,7 @@ POST    /signup                     controllers.SignUp.submit()
 # Session
 GET     /loginform                  controllers.Session.loginForm()
 POST    /loginform                  controllers.Session.authenticate()
-GET     /login                      controllers.Session.login()
+GET     /userhome                   controllers.Rupin.userhome()
 GET     /logout                     controllers.Session.logout()
 
 # Boards

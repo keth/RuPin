@@ -11,7 +11,7 @@
 
     @if(loginForm.hasErrors) { <p>Login failed!</p> }
 
-    @helper.form(action = routes.Session.login) {
+    @helper.form(action = routes.Session.authenticate) {
         <fieldset>
             <legend>Login</legend>
           @inputText(

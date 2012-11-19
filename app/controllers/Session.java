@@ -11,7 +11,6 @@ import is.ru.honn.rupin.service.UserService;
 import play.data.Form;
 import play.mvc.Result;
 import views.html.index;
-import views.html.session.board;
 import views.html.session.login;
 import views.html.session.loginform;
 
@@ -34,6 +33,7 @@ public class Session extends RuPinController {
             return ok(index.render());
         }
         if (u.getPassword().equals(ua.getPassword())) {
+            session().put("username", u.getUsername());
             return redirect(routes.Session.login());
         } else {
             return ok(index.render());
@@ -44,13 +44,14 @@ public class Session extends RuPinController {
         // loginForm = loginForm.fill(new UserAuthentication("user01", "Password"));
         Form<UserAuthentication> filledLoginForm = loginForm.bindFromRequest();
         UserDataGateway userDataGateway = (UserDataGateway) ctx.getBean("userDataGateway");
-        User u = userDataGateway.getUserByUsername(filledLoginForm.field("username").value());
+        //User u = userDataGateway.getUserByUsername(filledLoginForm.field("username").value());
+        User u = userDataGateway.getUserByUsername("qwer");
         UserAuthentication ua = filledLoginForm.get();
 
         if (null == u) {
             return ok(index.render());
         }
-        if (u.getPassword().equals(ua.getPassword())) {
+       // if (u.getPassword().equals(ua.getPassword())) {
             PinService pinService = (PinService) ctx.getBean("pinService");
             UserService userService = (UserService) ctx.getBean("userService");
             userService.setUserDataGateway(userDataGateway);
@@ -70,25 +71,17 @@ public class Session extends RuPinController {
                 }
             }
             return ok(login.render(pins));
-        } else {
-            return ok(index.render());
-        }
+      //  } else {
+       //     return ok(index.render());
+       // }
     }
 
     public static Result logout() {
+        session().clear();
         return ok(index.render());
-        // TODO: gera logout
     }
 
-    public static Result getBoard(String boardName){
-        PinService pinService = (PinService) ctx.getBean("pinService");
-        List<Pin> pins = pinService.getPinsOnBoard("keth", boardName);
 
-
-        return ok(board.render(pins));
-        //return ok(index.render());
-
-    }
 
 
 

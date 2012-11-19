@@ -1,0 +1,10 @@
+@(pin: is.ru.honn.rupin.domain.Pin)
+
+@main(Html("Pin created!"), nav = "rupin") {
+    
+    <h2>New Pin Created</h2>
+    <p>description: @pin.getDescription()</p>
+    <p>link: @pin.getLink()</p>
+
+    Go here to: <a href="@routes.Session.loginForm">Login</a>
+}

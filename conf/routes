@@ -16,7 +16,7 @@ GET     /login                      controllers.Session.login()
 GET     /logout                     controllers.Session.logout()
 
 # Boards
-GET     /board/:boardName           controllers.Session.getBoard(boardName: String)
+GET     /board/:boardName           controllers.Rupin.getBoard(boardName: String)
 
 # createPin
 GET     /createpin                     controllers.Rupin.blank()

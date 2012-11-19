@@ -1,0 +1,41 @@
+@(pinForm: Form[is.ru.honn.rupin.domain.Pin])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@title = {
+    createPin
+}
+
+@main(title, nav = "rupin") {
+    @helper.form(action = routes.Rupin.submit) {
+        <fieldset>
+            <legend>Pin informations</legend>
+            @inputText(
+                pinForm("description"),
+                '_label -> "Description",
+                '_help -> "Please enter description.",
+                '_error -> pinForm.globalError
+            )
+          @inputText(
+                pinForm("link"),
+                '_label -> "Link",
+                '_help -> "Please enter url.",
+                '_error -> pinForm.globalError
+          )
+
+            @inputText(
+                pinForm("boardName"),
+                '_label -> "Board Name",
+                '_help -> "Please enter boardname. "
+            )
+
+        </fieldset>
+
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="createPin">
+            <a href="@routes.Application.index" class="btn">Cancel</a>
+        </div>
+    }
+}

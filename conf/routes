@@ -18,6 +18,10 @@ GET     /logout                     controllers.Session.logout()
 # Boards
 GET     /board/:boardName           controllers.Session.getBoard(boardName: String)
 
+# createPin
+GET     /createpin                     controllers.Rupin.blank()
+POST    /createpin                     controllers.Rupin.submit()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

@@ -5,7 +5,6 @@ import is.ru.honn.rupin.data.PinDataGateway;
 import is.ru.honn.rupin.data.UserDataGateway;
 import is.ru.honn.rupin.domain.Board;
 import is.ru.honn.rupin.domain.Pin;
-import is.ru.honn.rupin.domain.User;
 import is.ru.honn.rupin.domain.UserAuthentication;
 import is.ru.honn.rupin.service.PinService;
 import is.ru.honn.rupin.service.UserService;
@@ -13,24 +12,26 @@ import play.data.Form;
 import play.mvc.Result;
 import views.html.rupin.board;
 import views.html.rupin.createpin;
-import views.html.rupin.pinSummary;
+import views.html.rupin.pinsummary;
 import views.html.rupin.userhome;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Pupin controller sér um pinService virki, búa til pin, display-a pin og board.
+ *  Rupin controller sér um pinService virkni, búa til pin, display-a pin og board.
  *   notandi verður að vera loggaður inn til að komast í þennan controller
  */
 public class Rupin extends RuPinController {
 
     final static Form<UserAuthentication> loginForm = form(UserAuthentication.class);
     final static Form<Pin> pinForm = form(Pin.class);
-    final static UserDataGateway userDataGateway = (UserDataGateway) ctx.getBean("userDataGateway");
     final static PinService pinService = (PinService) ctx.getBean("pinService");
     final static UserService userService = (UserService) ctx.getBean("userService");
+    final static UserDataGateway userDataGateway = (UserDataGateway) ctx.getBean("userDataGateway");
     final static BoardDataGateway boardDataGateway = (BoardDataGateway) ctx.getBean("boardDataGateway");
+    final static PinDataGateway pinDataGateway = (PinDataGateway) ctx.getBean("pinDataGateway");
+
 
     /**
      * Í þessu falli eru týndir til allir pinnar sem fylgja þeim notendum
@@ -38,7 +39,7 @@ public class Rupin extends RuPinController {
      * @return listi af pinnum sem birtast á userhome innskráðs notanda
      */
     public static Result userhome() {
-        String user = session("connected");
+        String user = session("username");
         if (user != null) {
             userService.setUserDataGateway(userDataGateway);
             List<Pin> pins = new ArrayList<Pin>();
@@ -63,7 +64,7 @@ public class Rupin extends RuPinController {
      * @return
      */
     public static Result blank() {
-        String user = session("connected");
+        String user = session("username");
         if (user != null) {
             return ok(createpin.render(pinForm));
         } else {
@@ -85,10 +86,13 @@ public class Rupin extends RuPinController {
             return badRequest(createpin.render(filledForm));
         } else {
             Pin created = filledForm.get();
-            PinDataGateway pinDataGateway = (PinDataGateway) ctx.getBean("pinDataGateway");
-            pinDataGateway.add(created, "MyFirstBoard", session().get("username"));
+            Board board = pinService.getBoard(session().get("username"), filledForm.field("boardName").value());
+            if(null == board){
+                return unauthorized("Board does not exist ");
+            }
+            pinDataGateway.add(created,  board.getName(), session().get("username"));
 
-            return ok(pinSummary.render(created));
+            return ok(pinsummary.render(created));
         }
     }
 
@@ -98,12 +102,12 @@ public class Rupin extends RuPinController {
      * @param boardName
      * @return  Listi af pinnum á ákveðnu borði
      */
-    public static Result boardname(String boardName) {
-        String user = session("connected");
+    public static Result getBoard(String boardName) {
+        String user = session("username");
         if (user != null) {
-            User u = userDataGateway.getUserByUsername(session().get("username"));
+            userService.setUserDataGateway(userDataGateway);
             List<Pin> pins = new ArrayList<Pin>();
-            List<String> followers = userDataGateway.getFollowers(u.getUsername());
+            List<String> followers = userDataGateway.getFollowers(session().get("username"));
             for (String f : followers) {
                 List<Pin> followerPins = pinService.getPinsOnBoard(f, boardName);
                 for (Pin fp : followerPins) {

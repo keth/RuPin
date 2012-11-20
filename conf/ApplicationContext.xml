@@ -28,8 +28,8 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/>
         <property name="url" value="jdbc:jtds:sqlserver://hrnem.ru.is:1433"/>
-        <property name="username" value="hshkristjant08"/>
-        <property name="password" value="klcx3e"/>
+        <property name="username" value="hshbirgira07"/>
+        <property name="password" value="of7ej8"/>
     </bean>
 
 </beans>

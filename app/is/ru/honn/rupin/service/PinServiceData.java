@@ -82,7 +82,7 @@ public class PinServiceData implements PinService
   {
     User u = userDataGateway.getUserByUsername(username);
     Board b = boardDataGateway.getBoard(username, boardname);
-    List<Pin> pins = pinDataGateway.getPinsOnBoard(username, boardname);
+    List<Pin> pins = pinDataGateway.getPinsOnBoard(boardname, username);
     for (Pin p : pins){
         p.setCreator(u);
         p.setBoard(b);

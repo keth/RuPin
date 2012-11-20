@@ -9,25 +9,21 @@
 
 <div class="actions">
     <a class="btn" href="@routes.Rupin.blank">Create New Pin</a>
-
     <a class="btn" href="@routes.Session.logout">Logout</a>
 </div>
 
-
     <h4>your followers pins:  </h4>
-
+    <hr>
 
     @for(pin <- pins){
     <div class="container">
-        <p>@pin.getDescription</p>
+        <h4>@pin.getDescription</h4>
         <p><i>@pin.getLink</i></p>
         <p>@pin.getImage</p>
-        <p>@pin.getCreator().getUsername</p>
-        <a href="@routes.Rupin.getBoard(pin.getBoard.getName())">@pin.getBoard</a>
+        <p>@pin.getCreator().getName</p>
+        <a href="@routes.Rupin.boardname(pin.getBoard.getName())">@pin.getBoard</a>
 
-
-        <p>*****************************</p>
-
+    <hr>
     </div>
     }
 

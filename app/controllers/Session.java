@@ -9,6 +9,9 @@ import views.html.index;
 import views.html.session.loginform;
 
 public class Session extends RuPinController {
+
+    //þessi controller sér um loginForm, password validation, logout.  og líka að setja user í
+    // session og að clera sessionið
     final static Form<UserAuthentication> loginForm = form(UserAuthentication.class);
 
     public static Result loginForm() {
@@ -23,17 +26,16 @@ public class Session extends RuPinController {
         if (null == u) {
             return ok(index.render());
         } if (u.getPassword().equals(ua.getPassword())) {
-            session().put("username", u.getUsername());
-            return redirect(routes.Rupin.userhome());
+            session().put("username", u.getUsername());     // User settur í session
+            return redirect(routes.Rupin.userhome());       // ...og redirectað á userhome
         } else {
             return ok(index.render());
         }
     }
 
     public static Result logout() {
-        session().clear();
-        return ok(index.render());
+        session().clear();            // session hreinsuð
+        return ok("Bye");
     }
-
 }
 

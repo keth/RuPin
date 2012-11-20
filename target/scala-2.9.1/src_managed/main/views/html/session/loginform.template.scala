@@ -43,7 +43,7 @@ Seq[Any](format.raw/*1.63*/("""
 
     """),_display_(Seq[Any](/*12.6*/if(loginForm.hasErrors)/*12.29*/ {_display_(Seq[Any](format.raw/*12.31*/(""" <p>Login failed!</p> """)))})),format.raw/*12.54*/("""
 
-    """),_display_(Seq[Any](/*14.6*/helper/*14.12*/.form(action = routes.Session.login)/*14.48*/ {_display_(Seq[Any](format.raw/*14.50*/("""
+    """),_display_(Seq[Any](/*14.6*/helper/*14.12*/.form(action = routes.Session.authenticate)/*14.55*/ {_display_(Seq[Any](format.raw/*14.57*/("""
         <fieldset>
             <legend>Login</legend>
           """),_display_(Seq[Any](/*17.12*/inputText(
@@ -73,10 +73,10 @@ Seq[Any](format.raw/*1.63*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Wed Nov 14 13:42:21 GMT 2012
-                    SOURCE: C:/verkefni/skilaverkefni04/RuPin/app/views/session/loginform.scala.html
-                    HASH: 5968266d8d2c7d4c70b3dd1fdbd40856c8c5ce3e
-                    MATRIX: 809->1|980->117|992->122|1059->126|1110->62|1138->115|1165->138|1203->141|1238->167|1278->169|1320->176|1352->199|1392->201|1447->224|1489->231|1504->237|1549->273|1589->275|1691->341|1808->436|1856->448|1981->551|2159->693|2174->699|2214->717|2290->762
+                    DATE: Tue Nov 20 08:36:53 GMT 2012
+                    SOURCE: C:/Users/Lenovo/IdeaProjects/GitHub/RuPin/app/views/session/loginform.scala.html
+                    HASH: 2d36cc6fd854955ee428c2e614e34ff6481927c2
+                    MATRIX: 809->1|980->117|992->122|1059->126|1110->62|1138->115|1165->138|1203->141|1238->167|1278->169|1320->176|1352->199|1392->201|1447->224|1489->231|1504->237|1556->280|1596->282|1698->348|1815->443|1863->455|1988->558|2166->700|2181->706|2221->724|2297->769
                     LINES: 27->1|32->6|32->6|34->6|37->1|39->5|40->8|42->10|42->10|42->10|44->12|44->12|44->12|44->12|46->14|46->14|46->14|46->14|49->17|52->20|53->21|56->24|61->29|61->29|61->29|63->31
                     -- GENERATED --
                 */

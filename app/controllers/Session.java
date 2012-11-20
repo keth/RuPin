@@ -8,16 +8,28 @@ import play.mvc.Result;
 import views.html.index;
 import views.html.session.loginform;
 
+/**
+ *  Session controller sér um loginForm, password validation og logout. Einnig sér
+ *  hann líka að setja user í session og að hreinsa sessionið
+ */
+
 public class Session extends RuPinController {
 
-    //þessi controller sér um loginForm, password validation, logout.  og líka að setja user í
-    // session og að clera sessionið
     final static Form<UserAuthentication> loginForm = form(UserAuthentication.class);
 
+    /**
+     * Birtir Loginform
+     * @return
+     */
     public static Result loginForm() {
         return ok(loginform.render(loginForm));
     }
 
+    /**
+     * Sér um authentication af user með því að bera saman password sem user setur inn
+     * við password sem sótt er í gagnagrunn
+     * @return ef password passar þá birtist userhome view
+     */
     public static Result authenticate() {
         Form<UserAuthentication> filledLoginForm = loginForm.bindFromRequest();
         UserDataGateway userDataGateway = (UserDataGateway) ctx.getBean("userDataGateway");
@@ -33,6 +45,10 @@ public class Session extends RuPinController {
         }
     }
 
+    /**
+     * Sér um að hreinsa út session þegar loggað er út
+     * @return skilaboð um að notandi er loggaður út
+     */
     public static Result logout() {
         session().clear();            // session hreinsuð
         return ok("Bye");

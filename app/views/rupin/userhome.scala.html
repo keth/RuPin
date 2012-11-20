@@ -5,7 +5,7 @@
 
 @main(Html("RuPin")) {
     <h2>Welcome</h2>
-    <h3>U R Loged In </h3>
+    <h3>U R Logged Into RuPin </h3>
 
 <div class="actions">
     <a class="btn" href="@routes.Rupin.blank">Create New Pin</a>
@@ -21,7 +21,6 @@
         <p><i>@pin.getLink</i></p>
         <p>@pin.getImage</p>
         <p>@pin.getCreator().getName</p>
-        <a href="@routes.Rupin.boardname(pin.getBoard.getName())">@pin.getBoard</a>
 
     <hr>
     </div>

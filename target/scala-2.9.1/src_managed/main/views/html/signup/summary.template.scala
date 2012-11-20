@@ -49,8 +49,8 @@ Seq[Any](format.raw/*1.38*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Wed Nov 14 13:42:21 GMT 2012
-                    SOURCE: C:/verkefni/skilaverkefni04/RuPin/app/views/signup/summary.scala.html
+                    DATE: Tue Nov 20 08:36:53 GMT 2012
+                    SOURCE: C:/Users/Lenovo/IdeaProjects/GitHub/RuPin/app/views/signup/summary.scala.html
                     HASH: 10fa3a61d28509ee8d646929ac439a70042ef835
                     MATRIX: 786->1|899->37|936->40|990->86|1029->88|1111->135|1123->139|1154->149|1212->172|1224->176|1259->190|1314->210|1326->214|1358->225|1426->257|1441->263|1481->281
                     LINES: 27->1|30->1|32->3|32->3|32->3|35->6|35->6|35->6|36->7|36->7|36->7|37->8|37->8|37->8|39->10|39->10|39->10

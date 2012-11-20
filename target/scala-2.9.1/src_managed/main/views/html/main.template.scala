@@ -40,12 +40,12 @@ Seq[Any](format.raw/*1.48*/("""
     </head>
     <body>
         
-        <div class="topbar">
-            <div class="fill">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href=""""),_display_(Seq[Any](/*17.45*/routes/*17.51*/.Application.index())),format.raw/*17.71*/("""">RuPin</a>&nbsp;
-                           <a href=""""),_display_(Seq[Any](/*18.38*/routes/*18.44*/.SignUp.blank)),format.raw/*18.57*/("""">Sign up</a>&nbsp;
-                           <a href=""""),_display_(Seq[Any](/*19.38*/routes/*19.44*/.Session.loginForm)),format.raw/*19.62*/("""">Login</a>&nbsp;
+                    <a class="brand"<a href=""""),_display_(Seq[Any](/*18.47*/routes/*18.53*/.SignUp.blank)),format.raw/*18.66*/("""">Sign up</a>&nbsp;
+                    <a class="brand"<a href=""""),_display_(Seq[Any](/*19.47*/routes/*19.53*/.Session.loginForm)),format.raw/*19.71*/("""">Login</a>&nbsp;
                 </div>
             </div>
         </div>
@@ -55,20 +55,22 @@ Seq[Any](format.raw/*1.48*/("""
             <div class="content">
                 
                 <div class="page-header">
-                    <h1>"""),_display_(Seq[Any](/*29.26*/title)),format.raw/*29.31*/("""</h1>
+
                 </div>
+                <div class="hero-unit">
 
                 <div class="row">
                     <div class="span14">
-                        """),_display_(Seq[Any](/*34.26*/content)),format.raw/*34.33*/("""
+
+                        """),_display_(Seq[Any](/*36.26*/content)),format.raw/*36.33*/("""
                     </div>
                 </div>
-                
+                </div>
             </div>
-
+             <hr>
             <footer>
                 <p>
-                    RuPin
+                    RuPin 2012
                 </p>
             </footer>
 
@@ -88,11 +90,11 @@ Seq[Any](format.raw/*1.48*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri Nov 16 10:34:25 GMT 2012
-                    SOURCE: C:/verkefni/skilaverkefni04/RuPin/app/views/main.scala.html
-                    HASH: b629da16709d77e6089300c74297fdfd3917e0d0
-                    MATRIX: 764->1|887->47|1041->166|1055->172|1115->211|1211->272|1225->278|1278->310|1339->335|1354->341|1421->386|1668->597|1683->603|1725->623|1816->678|1831->684|1866->697|1959->754|1974->760|2014->778|2277->1005|2304->1010|2470->1140|2499->1147
-                    LINES: 27->1|30->1|37->8|37->8|37->8|38->9|38->9|38->9|39->10|39->10|39->10|46->17|46->17|46->17|47->18|47->18|47->18|48->19|48->19|48->19|58->29|58->29|63->34|63->34
+                    DATE: Tue Nov 20 08:36:52 GMT 2012
+                    SOURCE: C:/Users/Lenovo/IdeaProjects/GitHub/RuPin/app/views/main.scala.html
+                    HASH: 762a65dad865c5a7f265867327b4e2d26961daf3
+                    MATRIX: 764->1|887->47|1041->166|1055->172|1115->211|1211->272|1225->278|1278->310|1339->335|1354->341|1421->386|1708->637|1723->643|1765->663|1865->727|1880->733|1915->746|2017->812|2032->818|2072->836|2476->1204|2505->1211
+                    LINES: 27->1|30->1|37->8|37->8|37->8|38->9|38->9|38->9|39->10|39->10|39->10|46->17|46->17|46->17|47->18|47->18|47->18|48->19|48->19|48->19|65->36|65->36
                     -- GENERATED --
                 */
             

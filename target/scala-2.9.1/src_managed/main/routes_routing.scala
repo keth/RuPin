@@ -1,6 +1,6 @@
-// @SOURCE:C:/verkefni/skilaverkefni04/RuPin/conf/routes
-// @HASH:ccf43098a913d9897e2912a2b5abb75f2954dcfc
-// @DATE:Wed Nov 14 13:42:19 GMT 2012
+// @SOURCE:C:/Users/Lenovo/IdeaProjects/GitHub/RuPin/conf/routes
+// @HASH:c482f4010122836ee603359b09f4c6dfdb7f5d2a
+// @DATE:Tue Nov 20 11:53:04 GMT 2012
 
 import play.core._
 import play.core.Router._
@@ -27,9 +27,33 @@ val controllers_SignUp_submit2 = Route("POST", PathPattern(List(StaticPart("/sig
                     
 
 // @LINE:13
-val controllers_Assets_at3 = Route("GET", PathPattern(List(StaticPart("/assets/"),DynamicPart("file", """.+"""))))
+val controllers_Session_loginForm3 = Route("GET", PathPattern(List(StaticPart("/loginform"))))
                     
-def documentation = List(("""GET""","""/""","""controllers.Application.index()"""),("""GET""","""/signup""","""controllers.SignUp.blank()"""),("""POST""","""/signup""","""controllers.SignUp.submit()"""),("""GET""","""/assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""))
+
+// @LINE:14
+val controllers_Session_authenticate4 = Route("POST", PathPattern(List(StaticPart("/loginform"))))
+                    
+
+// @LINE:15
+val controllers_Rupin_userhome5 = Route("GET", PathPattern(List(StaticPart("/userhome"))))
+                    
+
+// @LINE:16
+val controllers_Session_logout6 = Route("GET", PathPattern(List(StaticPart("/logout"))))
+                    
+
+// @LINE:22
+val controllers_Rupin_blank7 = Route("GET", PathPattern(List(StaticPart("/createpin"))))
+                    
+
+// @LINE:23
+val controllers_Rupin_submit8 = Route("POST", PathPattern(List(StaticPart("/createpin"))))
+                    
+
+// @LINE:26
+val controllers_Assets_at9 = Route("GET", PathPattern(List(StaticPart("/assets/"),DynamicPart("file", """.+"""))))
+                    
+def documentation = List(("""GET""","""/""","""controllers.Application.index()"""),("""GET""","""/signup""","""controllers.SignUp.blank()"""),("""POST""","""/signup""","""controllers.SignUp.submit()"""),("""GET""","""/loginform""","""controllers.Session.loginForm()"""),("""POST""","""/loginform""","""controllers.Session.authenticate()"""),("""GET""","""/userhome""","""controllers.Rupin.userhome()"""),("""GET""","""/logout""","""controllers.Session.logout()"""),("""GET""","""/createpin""","""controllers.Rupin.blank()"""),("""POST""","""/createpin""","""controllers.Rupin.submit()"""),("""GET""","""/assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""))
              
     
 def routes:PartialFunction[RequestHeader,Handler] = {        
@@ -59,7 +83,55 @@ case controllers_SignUp_submit2(params) => {
                     
 
 // @LINE:13
-case controllers_Assets_at3(params) => {
+case controllers_Session_loginForm3(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Session.loginForm(), HandlerDef(this, "controllers.Session", "loginForm", Nil))
+   }
+}
+                    
+
+// @LINE:14
+case controllers_Session_authenticate4(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Session.authenticate(), HandlerDef(this, "controllers.Session", "authenticate", Nil))
+   }
+}
+                    
+
+// @LINE:15
+case controllers_Rupin_userhome5(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Rupin.userhome(), HandlerDef(this, "controllers.Rupin", "userhome", Nil))
+   }
+}
+                    
+
+// @LINE:16
+case controllers_Session_logout6(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Session.logout(), HandlerDef(this, "controllers.Session", "logout", Nil))
+   }
+}
+                    
+
+// @LINE:22
+case controllers_Rupin_blank7(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Rupin.blank(), HandlerDef(this, "controllers.Rupin", "blank", Nil))
+   }
+}
+                    
+
+// @LINE:23
+case controllers_Rupin_submit8(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Rupin.submit(), HandlerDef(this, "controllers.Rupin", "submit", Nil))
+   }
+}
+                    
+
+// @LINE:26
+case controllers_Assets_at9(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
         invokeHandler(_root_.controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String])))
    }

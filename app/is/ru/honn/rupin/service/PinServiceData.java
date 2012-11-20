@@ -38,7 +38,13 @@ public class PinServiceData implements PinService
   @Override
   public Board getBoard(String username, String boardname)
   {
-    return boardDataGateway.getBoard(username, boardname);
+      try
+      {
+          return boardDataGateway.getBoard(username, boardname);
+      } catch (DataAccessException daex)
+      {
+        return null;
+      }
   }
 
   @Override
